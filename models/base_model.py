@@ -21,7 +21,7 @@ class BaseModel():
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
-                    pass
+                    continue
                 if key == "update_at" or key == "created_at":
                     self.__dict__[key] = datetime.strptime(
                         value, format_required)

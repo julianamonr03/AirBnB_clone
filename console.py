@@ -17,8 +17,9 @@ from models.amenity import Amenity
 
 """ Classes """
 CLASSES = {"BaseModel": BaseModel, "User": User,
-         "City": City, "Place": Place, "Review": Review,
-         "State": State, "Amenity": Amenity}
+           "City": City, "Place": Place, "Review": Review,
+           "State": State, "Amenity": Amenity}
+
 
 class HBNBCommand(cmd.Cmd):
     '''Entry point of the command interpreter'''
@@ -76,6 +77,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return False
         print(data_storage[key])
+
     def do_destroy(self, arg):
         '''Deletes an instance based on the class name and id'''
         split_arg = arg.split()
@@ -123,6 +125,7 @@ class HBNBCommand(cmd.Cmd):
                 if split_arg[0] == obj.__class__.__name__:
                     all_data.append(obj.__str__())
         print(all_data)
+
     def do_destroy(self, arg):
         '''Deletes an instance based on the class name and id'''
         split_arg = arg.split()

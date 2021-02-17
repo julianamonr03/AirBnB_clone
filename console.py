@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ Command interpreter console """
 
-import cmd
 import sys
+import cmd
 import json
 import shlex
 from models.base_model import BaseModel

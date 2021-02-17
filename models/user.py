@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" Class User that inherits from BaseModel """
+""" New class User that inherits from BaseModel"""
 
 
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """ Public Class attributes  """
+    """ New Class inherits from BaseModel"""
 
     email = ""
     password = ""

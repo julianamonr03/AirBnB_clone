@@ -91,6 +91,7 @@ class HBNBCommand(cmd.Cmd):
 
         if split_arg[0] not in CLASSES:
             print("** class doesn't exist **")
+            return False
 
         storage = FileStorage()
         storage.reload()
@@ -139,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
 
         if split_arg[0] not in CLASSES:
             print("** class doesn't exist **")
+            return False
 
         storage = FileStorage()
         storage.reload()

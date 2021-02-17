@@ -7,7 +7,7 @@ from datetime import datetime
 import models
 
 
-format_required = "%Y-%m-%dT%H:%M:%S.%f"
+format_iso = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel():
@@ -21,10 +21,9 @@ class BaseModel():
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
-                    pass
-                if key == "update_at" or key == "created_at":
-                    self.__dict__[key] = datetime.strptime(
-                        value, format_required)
+                    continue
+                if key == 'created_at' or key == 'updated_at':
+                    self.__dict__[key] = datetime.strptime(value, format_iso)
                 else:
                     self.__dict__[key] = value
         else:

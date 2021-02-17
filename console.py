@@ -7,11 +7,21 @@ import json
 import shlex
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.user import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.amenity import Amenity
 
-CLASSES = {"BaseModel": BaseModel}
+
+""" Classes """
+CLASSES = {"BaseModel": BaseModel, "User": User,
+         "City": City, "Place": Place, "Review": Review,
+         "State": State, "Amenity": Amenity}
 
 class HBNBCommand(cmd.Cmd):
-    ''' Entry point of the command interpreter '''
+    '''Entry point of the command interpreter'''
     prompt = "(hbnb) "
 
     def emptyline(self):
@@ -162,43 +172,41 @@ class HBNBCommand(cmd.Cmd):
         print(all_data)
 
     def do_update(self, arg):
-            """
-            Update specific attribute of a class instance of
-            a given id
-            Usage:
-            update <class name> <id> <attribute name> "<attribute value>"
-            """
-            arg_split = arg.split()
+        """ Update specific attribute of a class instance of
+        a given id Usage:
+        update <class name> <id> <attribute name> "<attribute value>"
+        """
+        arg_split = arg.split()
 
-            if not len(arg_split):
-                print("** class name missing **")
-                return False
+        if not len(arg_split):
+            print("** class name missing **")
+            return False
 
-            if arg_split[0] not in CLASSES:
-                print("** class doesn't exist **")
-                return False
+        if arg_split[0] not in CLASSES:
+            print("** class doesn't exist **")
+            return False
 
-            if len(arg_split) == 1:
-                print("** instance id missing **")
-                return False
+        if len(arg_split) == 1:
+            print("** instance id missing **")
+            return False
 
-            if len(arg_split) == 2:
-                print("** attribute name missing **")
-                return False
+        if len(arg_split) == 2:
+            print("** attribute name missing **")
+            return False
 
-            if len(arg_split) == 3:
-                print("** value missing **")
-                return False
+        if len(arg_split) == 3:
+            print("** value missing **")
+            return False
 
+        else:
+            storage = FileStorage()
+            data = storage.all()
+            key = "{}.{}".format(arg_split[0], arg_split[1])
+            if key in data.keys():
+                setattr(data[key], arg_split[2], arg_split[3])
+                storage.save()
             else:
-                storage = FileStorage()
-                data = storage.all()
-                key = "{}.{}".format(arg_split[0], arg_split[1])
-                if key in data.keys():
-                    setattr(data[key], arg_split[2], arg_split[3])
-                    storage.save()
-                else:
-                    print("** no instance found **")
+                print("** no instance found **")
 
     def count(self, arg):
         ''' Count instances of a class '''

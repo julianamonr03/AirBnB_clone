@@ -205,6 +205,7 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             storage = FileStorage()
+            storage.reload()
             data = storage.all()
             key = "{}.{}".format(arg_split[0], arg_split[1])
             if key in data.keys():

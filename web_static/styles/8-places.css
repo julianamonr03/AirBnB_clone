@@ -83,7 +83,7 @@ article {
 }
 
 
-#person_icon {
+.person_icon {
 	background: url(../images/icon_group.png) no-repeat;
 	width: 50px;
 	height: 50px;
@@ -92,7 +92,7 @@ article {
 
 }
 
-#bed_icon {
+.bed_icon {
 	background: url(../images/icon_bed.png) no-repeat;
 	width: 50px;
 	height: 50px;
@@ -100,7 +100,7 @@ article {
 	margin-right: auto;
 }
 
-#bath_icon {
+.bath_icon {
 	background: url(../images/icon_bath.png) no-repeat;
 	width: 50px;
 	height: 50px;

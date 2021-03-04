@@ -6,6 +6,7 @@ html {
 .container {
 	max-width: 1000px;
 	margin: 30px auto;
+	margin-bottom: 80px;
 }
 
 body {
